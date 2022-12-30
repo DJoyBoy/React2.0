@@ -38,13 +38,15 @@
 
 .page__wrapper {
   margin-top: 20px;
-  display: flex
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .page {
   padding: 10px;
   border: 1px solid teal;
   cursor: pointer;
+  width: 35px;
 }
 
 .page__current {

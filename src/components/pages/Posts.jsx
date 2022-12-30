@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 // import Counter from "./components/Counter";
 // import ClassCounter from "./components/ClassCounter";
 import PostForm from "../PostForm";
@@ -20,8 +20,9 @@ function Posts() {
   const [totalPages, setTotalPages] = useState(0);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
-  const lastElemnt = useRef();
-  const observer = useRef();
+  const [namber, setNamber] = useState(1);
+  // const lastElemnt = useRef();
+  // const observer = useRef();
 
   const sortedAndSerchedPosts = usePosts(posts, filter.sort, filter.query);
   const [fetchPost, isPostsLoading, postError] = useFetching(async () => {
@@ -54,7 +55,9 @@ function Posts() {
   }
 
   function changePage(paga) {
+    setNamber(`${paga}`);
     setPage(paga);
+    console.log(paga);
   }
 
   return (
@@ -82,9 +85,8 @@ function Posts() {
       <PostList
         remowe={remowPost}
         posts={sortedAndSerchedPosts}
-        title="Списое заяв 1"
+        title={`Списое заяв №${namber}`}
       />
-      <div ref={lastElemnt} style={{ height: 20, background: "red" }}></div>
       {isPostsLoading && (
         <div
           style={{
