@@ -24,7 +24,11 @@ function Posts() {
   // const lastElemnt = useRef();
   // const observer = useRef();
 
-  const sortedAndSerchedPosts = usePosts(posts, filter.sort, filter.query);
+  const sortedAndSerchedPosts = usePosts(
+    posts,
+    filter.sort,
+    filter.query.toLowerCase()
+  );
   const [fetchPost, isPostsLoading, postError] = useFetching(async () => {
     const response = await PostService.getAll(limit, page);
     setPosts(response.data);
